@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>246FE6D4-3428-4FD5-B20A-114A41C898E3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FlappySprites</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F07CBBD8CECA03DB84005C3F02E5D9B60E52C024</key>
+		<string>https://github.com/wburhan2/FlappySprites.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FlappySprites/FlappySprites.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F07CBBD8CECA03DB84005C3F02E5D9B60E52C024</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/wburhan2/FlappySprites.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F07CBBD8CECA03DB84005C3F02E5D9B60E52C024</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F07CBBD8CECA03DB84005C3F02E5D9B60E52C024</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FlappySprites</string>
+		</dict>
+	</array>
+</dict>
+</plist>
