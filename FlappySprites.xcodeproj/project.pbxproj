@@ -15,6 +15,10 @@
 		C814DC9419F7762A00AA1A51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C814DC9319F7762A00AA1A51 /* Images.xcassets */; };
 		C814DC9719F7762A00AA1A51 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C814DC9519F7762A00AA1A51 /* LaunchScreen.xib */; };
 		C814DCA319F7762A00AA1A51 /* FlappySpritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C814DCA219F7762A00AA1A51 /* FlappySpritesTests.swift */; };
+		C814DCAF19F7791600AA1A51 /* sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = C814DCAE19F7791600AA1A51 /* sprite.png */; };
+		C814DCB819F7899800AA1A51 /* PipeDown.png in Resources */ = {isa = PBXBuildFile; fileRef = C814DCB619F7899800AA1A51 /* PipeDown.png */; };
+		C814DCB919F7899800AA1A51 /* PipeUp.png in Resources */ = {isa = PBXBuildFile; fileRef = C814DCB719F7899800AA1A51 /* PipeUp.png */; };
+		C814DCBB19F789AE00AA1A51 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = C814DCBA19F789AE00AA1A51 /* ground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,10 @@
 		C814DC9C19F7762A00AA1A51 /* FlappySpritesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappySpritesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C814DCA119F7762A00AA1A51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C814DCA219F7762A00AA1A51 /* FlappySpritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappySpritesTests.swift; sourceTree = "<group>"; };
+		C814DCAE19F7791600AA1A51 /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
+		C814DCB619F7899800AA1A51 /* PipeDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PipeDown.png; sourceTree = "<group>"; };
+		C814DCB719F7899800AA1A51 /* PipeUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PipeUp.png; sourceTree = "<group>"; };
+		C814DCBA19F789AE00AA1A51 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +104,11 @@
 		C814DC8619F7762A00AA1A51 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C814DCBA19F789AE00AA1A51 /* ground.png */,
+				C814DCB619F7899800AA1A51 /* PipeDown.png */,
+				C814DCB719F7899800AA1A51 /* PipeUp.png */,
 				C814DC8719F7762A00AA1A51 /* Info.plist */,
+				C814DCAE19F7791600AA1A51 /* sprite.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -198,10 +210,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C814DCB919F7899800AA1A51 /* PipeUp.png in Resources */,
 				C814DC9719F7762A00AA1A51 /* LaunchScreen.xib in Resources */,
 				C814DC9419F7762A00AA1A51 /* Images.xcassets in Resources */,
 				C814DC8B19F7762A00AA1A51 /* GameScene.sks in Resources */,
+				C814DCBB19F789AE00AA1A51 /* ground.png in Resources */,
+				C814DCB819F7899800AA1A51 /* PipeDown.png in Resources */,
 				C814DC9219F7762A00AA1A51 /* Main.storyboard in Resources */,
+				C814DCAF19F7791600AA1A51 /* sprite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FlappySprites/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -354,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FlappySprites/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -413,6 +431,7 @@
 				C814DCA819F7762A00AA1A51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C814DCA919F7762A00AA1A51 /* Build configuration list for PBXNativeTarget "FlappySpritesTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +440,7 @@
 				C814DCAB19F7762A00AA1A51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
