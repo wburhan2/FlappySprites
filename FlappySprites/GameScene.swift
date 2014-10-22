@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var skyColor = SKColor()
     var sprite = SKSpriteNode()
     var pipeUpTexture = SKTexture()
     var pipeDownTexture = SKTexture()
@@ -21,15 +22,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let worldCategory: UInt32 = 1 << 1
     let pipeCategory: UInt32 = 1 << 2
     
+    var moving = SKNode()
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
+        self.addChild(moving)
+        
         // Physics
         self.physicsWorld.gravity = CGVectorMake(0.0, -5.0)
+        self.physicsWorld.contactDelegate = self
         
         // Sprites
         var spriteTexture = SKTexture(imageNamed: "sprite")
         spriteTexture.filteringMode = SKTextureFilteringMode.Nearest
+        skyColor = SKColor(red: 113.0/255.0, green: 197.0/255.0, blue:207.0/255, alpha:1.0)
+        self.backgroundColor = skyColor
         
         sprite = SKSpriteNode(texture: spriteTexture)
         sprite.setScale(0.5)
@@ -39,11 +47,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sprite.physicsBody?.dynamic = true
         sprite.physicsBody?.allowsRotation = false
         
-//        sprite.physicsBody?.categoryBitMask = spriteCategory
-//        sprite.physicsBody?.collisionBitMask = worldCategory | pipeCategory
-//        sprite.physicsBody?.contactTestBitMask = worldCategory | pipeCategory
+        sprite.physicsBody?.categoryBitMask = spriteCategory
+        sprite.physicsBody?.collisionBitMask = worldCategory | pipeCategory
+        sprite.physicsBody?.contactTestBitMask = worldCategory | pipeCategory
         
-        self.addChild(sprite)
+        moving.addChild(sprite)
         
         // Ground
         var groundTexture = SKTexture(imageNamed: "ground")
@@ -58,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         groundNode.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: self.frame.size.width, height: groundTexture.size().height * 2.0))
         
         groundNode.physicsBody?.dynamic = false
-        self.addChild(groundNode)
+        moving.addChild(groundNode)
         
         // Pipes
         
@@ -96,6 +104,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         pipeDown.physicsBody = SKPhysicsBody(rectangleOfSize: pipeDown.size)
         pipeDown.physicsBody?.dynamic = false
+        pipeDown.physicsBody?.categoryBitMask = pipeCategory
+        pipeDown.physicsBody?.contactTestBitMask = spriteCategory
         pipePair.addChild(pipeDown)
         
         let pipeUp = SKSpriteNode(texture: pipeUpTexture)
@@ -104,25 +114,68 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         pipeUp.physicsBody = SKPhysicsBody(rectangleOfSize: pipeUp.size)
         pipeUp.physicsBody?.dynamic = false
+        pipeUp.physicsBody?.categoryBitMask = pipeCategory
+        pipeUp.physicsBody?.contactTestBitMask = spriteCategory
         pipePair.addChild(pipeUp)
         
         pipePair.runAction(pipeMoveAndRemove)
-        self.addChild(pipePair)
+        moving.addChild(pipePair)
     }
     
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
+        if (moving.speed > 0) {
+            for touch: AnyObject in touches {
+                let location = touch.locationInNode(self)
             
-            sprite.physicsBody?.velocity = CGVectorMake(0, 0)
-            sprite.physicsBody?.applyImpulse(CGVectorMake(0, 25))
+                sprite.physicsBody?.velocity = CGVectorMake(0, 0)
+                sprite.physicsBody?.applyImpulse(CGVectorMake(0, 25))
+            }
         }
     }
+    
+    func clamp (min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
+        if (value > max) {
+            return max
+        } else if (value < min) {
+            return min
+        } else {
+            return value
+        }
+        
+    }
    
-    override func update(currentTime: CFTimeInterval) {
+    //override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        //sprite.zRotation = self.clamp(-1, max: 0.5, value: sprite.physicsBody?.velocity.dx * (sprite.physicsBody?.velocity.dx < 0 ? 0.003 : 0.001))
+    //}
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        
+        if (moving.speed > 0) {
+            moving.speed = 0
+            var turnBackgroundRed = SKAction.runBlock({() in self.setBackgroundRed()})
+            var wait = SKAction.waitForDuration(0.05)
+            var turnBackgroundWhite = SKAction.runBlock({() in self.setBackgroundWhite()})
+            var turnBackgroundColorSky = SKAction.runBlock({() in self.setBackgroundSky()})
+            var sequenceOfActions = SKAction.sequence([turnBackgroundRed, wait, turnBackgroundWhite, wait, turnBackgroundColorSky])
+            var repeatSequence = SKAction.repeatAction(sequenceOfActions, count: 4)
+            
+            self.runAction(repeatSequence)
+        }
+    }
+    
+    func setBackgroundRed() {
+        self.backgroundColor = UIColor.redColor()
+    }
+    
+    func setBackgroundWhite() {
+        self.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func setBackgroundSky() {
+        self.backgroundColor = SKColor(red: 113.0/255.0, green: 197.0/255.0, blue:207.0/255, alpha:1.0)
     }
 }
