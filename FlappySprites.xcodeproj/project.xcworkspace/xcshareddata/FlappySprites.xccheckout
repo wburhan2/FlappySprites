@@ -14,11 +14,11 @@
 		<string>https://github.com/wburhan2/FlappySprites.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>FlappySprites/FlappySprites.xcodeproj</string>
+	<string>FlappySprites.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F07CBBD8CECA03DB84005C3F02E5D9B60E52C024</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/wburhan2/FlappySprites.git</string>
